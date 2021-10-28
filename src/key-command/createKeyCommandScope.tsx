@@ -37,7 +37,7 @@ export function createKeyCommandScope() {
         );
       }
       return keyCommandContext.addCommands(configs);
-    }, [configs]);
+    }, [configs, keyCommandContext]);
   };
   return {
     Provider,
@@ -72,7 +72,7 @@ function createKeyCommandProvider(scopeContext: React.Context<any>) {
         },
         debugLabel: props.debugLabel,
       }),
-      []
+      [commandMap, props.debugLabel]
     );
     const ProviderElement = props.element ?? "div";
     const ScopeElement = () => (
